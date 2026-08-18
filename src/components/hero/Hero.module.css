@@ -1,0 +1,602 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  width: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 72% 42%,
+      rgba(91, 79, 190, 0.28),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 25% 80%,
+      rgba(255, 217, 0, 0.055),
+      transparent 25%
+    ),
+    #17134d;
+  color: #fff;
+}
+
+.heroInner {
+  position: relative;
+  z-index: 2;
+  width: min(1440px, calc(100vw - 80px));
+  min-height: 100svh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.heroCopy {
+  position: relative;
+  z-index: 20;
+  width: 42%;
+  padding-top: 8vh;
+}
+
+.eyebrow {
+  margin-bottom: 28px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(64px, 8vw, 132px);
+  line-height: 0.84;
+  letter-spacing: -0.075em;
+  font-weight: 800;
+}
+
+.title span {
+  color: #ffd900;
+}
+
+.description {
+  max-width: 480px;
+  margin-top: 38px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.categoryInfo {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 42px;
+}
+
+.categoryNumber {
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffd900;
+}
+
+.categoryName {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.visual {
+  position: absolute;
+  top: 50%;
+  right: -4%;
+  width: 68%;
+  height: min(820px, 88vh);
+  transform: translateY(-50%);
+  z-index: 5;
+  touch-action: none;
+}
+
+.visual::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 700px;
+  height: 700px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(100, 86, 210, 0.18),
+    rgba(100, 86, 210, 0.04) 45%,
+    transparent 72%
+  );
+  filter: blur(20px);
+}
+
+/* =========================================================
+   BALLOON
+========================================================= */
+
+.balloonScene {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  width: 360px;
+  height: 500px;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  pointer-events: none;
+}
+
+.balloonGlow {
+  position: absolute;
+  inset: 15% 5% 20%;
+  border-radius: 50%;
+  background: rgba(255, 217, 0, 0.08);
+  filter: blur(60px);
+}
+
+.balloon {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 260px;
+  height: 390px;
+  transform: translateX(-50%);
+  animation: balloonFloat 7s ease-in-out infinite;
+}
+
+.balloonBody {
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  width: 235px;
+  height: 300px;
+  transform: translateX(-50%);
+  border-radius: 50% 50% 45% 45% / 48% 48% 52% 52%;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 35% 20%,
+      rgba(255,255,255,0.5),
+      transparent 14%
+    ),
+    radial-gradient(
+      circle at 62% 48%,
+      rgba(255,217,0,0.16),
+      transparent 36%
+    ),
+    linear-gradient(
+      110deg,
+      #6256b9 0%,
+      #30268b 38%,
+      #17134d 78%
+    );
+  box-shadow:
+    inset -30px -30px 70px rgba(0,0,0,0.28),
+    inset 20px 10px 45px rgba(255,255,255,0.08),
+    0 35px 80px rgba(0,0,0,0.3);
+}
+
+.balloonHighlight {
+  position: absolute;
+  left: 34px;
+  top: 35px;
+  width: 55px;
+  height: 130px;
+  border-radius: 50%;
+  transform: rotate(17deg);
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.28),
+    transparent
+  );
+  filter: blur(4px);
+}
+
+.balloonPanel {
+  position: absolute;
+  top: -10%;
+  width: 1px;
+  height: 120%;
+  background: rgba(255,255,255,0.1);
+}
+
+.panelOne {
+  left: 22%;
+}
+
+.panelTwo {
+  left: 38%;
+}
+
+.panelThree {
+  left: 58%;
+}
+
+.panelFour {
+  left: 76%;
+}
+
+.balloonTop {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 3;
+  display: flex;
+  gap: 5px;
+  transform: translateX(-50%);
+}
+
+.balloonTop span {
+  width: 3px;
+  height: 24px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.18);
+}
+
+.balloonNeck {
+  position: absolute;
+  left: 50%;
+  top: 306px;
+  width: 22px;
+  height: 40px;
+  transform: translateX(-50%);
+  background: #24205f;
+  clip-path: polygon(
+    25% 0,
+    75% 0,
+    100% 100%,
+    0 100%
+  );
+}
+
+.balloonRopes {
+  position: absolute;
+  left: 50%;
+  top: 335px;
+  width: 100px;
+  height: 50px;
+  transform: translateX(-50%);
+}
+
+.balloonRopes span {
+  position: absolute;
+  bottom: 0;
+  width: 1px;
+  height: 50px;
+  background: rgba(255,255,255,0.28);
+  transform-origin: bottom;
+}
+
+.balloonRopes span:nth-child(1) {
+  left: 15px;
+  transform: rotate(15deg);
+}
+
+.balloonRopes span:nth-child(2) {
+  left: 34px;
+  transform: rotate(7deg);
+}
+
+.balloonRopes span:nth-child(3) {
+  right: 34px;
+  transform: rotate(-7deg);
+}
+
+.balloonRopes span:nth-child(4) {
+  right: 15px;
+  transform: rotate(-15deg);
+}
+
+.balloonBasket {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 54px;
+  height: 35px;
+  transform: translateX(-50%);
+  border-radius: 4px 4px 8px 8px;
+  background: linear-gradient(
+    135deg,
+    #4e457c,
+    #211d4e
+  );
+  border: 1px solid rgba(255,255,255,0.16);
+}
+
+.balloonBasket span {
+  position: absolute;
+  left: 50%;
+  top: 7px;
+  width: 30px;
+  height: 2px;
+  transform: translateX(-50%);
+  background: rgba(255,217,0,0.65);
+}
+
+@keyframes balloonFloat {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0) rotate(-1deg);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-16px) rotate(1deg);
+  }
+}
+
+/* =========================================================
+   CAROUSEL
+========================================================= */
+
+.carouselWorld {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1px;
+  height: 1px;
+  z-index: 10;
+}
+
+.categoryCard {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 245px;
+  min-height: 145px;
+  padding: 20px;
+  display: block;
+  text-align: left;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 3px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(67,59,142,0.96),
+      rgba(25,21,76,0.94)
+    );
+  box-shadow:
+    0 30px 70px rgba(0,0,0,0.28),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  transition:
+    box-shadow 400ms ease,
+    border-color 400ms ease;
+  cursor: grab;
+}
+
+.categoryCard:active {
+  cursor: grabbing;
+}
+
+.categoryCard:hover,
+.categoryCard.front {
+  border-color: rgba(255,217,0,0.5);
+  box-shadow:
+    0 35px 90px rgba(0,0,0,0.35),
+    0 0 40px rgba(255,217,0,0.07);
+}
+
+.cardNumber {
+  display: block;
+  margin-bottom: 24px;
+  color: #ffd900;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardEyebrow {
+  margin-bottom: 8px;
+  font-size: 8px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.42);
+}
+
+.cardTitle {
+  font-size: 27px;
+  line-height: 1;
+  letter-spacing: -0.055em;
+  font-weight: 700;
+}
+
+.cardBrand {
+  margin-top: 25px;
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  color: rgba(255,255,255,0.42);
+}
+
+.cardBrand b {
+  color: #ffd900;
+}
+
+.orbitShadow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 820px;
+  height: 270px;
+  transform: translate(-50%, -50%) rotate(-5deg);
+  border: 1px solid rgba(255,255,255,0.055);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.dragHint {
+  position: absolute;
+  right: 4%;
+  bottom: 5%;
+  z-index: 30;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.35);
+}
+
+/* =========================================================
+   BOTTOM NAV
+========================================================= */
+
+.categoryIndicator {
+  position: absolute;
+  left: 40px;
+  bottom: 34px;
+  z-index: 30;
+  display: flex;
+  gap: 20px;
+  max-width: 65%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.categoryIndicator::-webkit-scrollbar {
+  display: none;
+}
+
+.indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  background: transparent;
+  color: rgba(255,255,255,0.35);
+  white-space: nowrap;
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.indicatorDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.indicator.active {
+  color: #ffd900;
+}
+
+.scrollIndicator {
+  position: absolute;
+  right: 40px;
+  bottom: 34px;
+  z-index: 30;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.35);
+}
+
+.cornerButton {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  z-index: 30;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  transform: translateY(-50%);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: #ffd900;
+  font-size: 10px;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 1100px) {
+  .heroInner {
+    width: min(100% - 48px, 900px);
+  }
+
+  .heroCopy {
+    width: 45%;
+  }
+
+  .visual {
+    width: 70%;
+    right: -12%;
+  }
+
+  .balloonScene {
+    transform: translate(-50%, -50%) scale(0.82);
+  }
+
+  .categoryCard {
+    width: 210px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    min-height: 850px;
+  }
+
+  .heroInner {
+    width: calc(100% - 32px);
+    min-height: 850px;
+    align-items: flex-start;
+  }
+
+  .heroCopy {
+    width: 100%;
+    padding-top: 125px;
+  }
+
+  .title {
+    font-size: clamp(54px, 16vw, 82px);
+  }
+
+  .description {
+    max-width: 340px;
+    margin-top: 24px;
+    font-size: 13px;
+  }
+
+  .visual {
+    top: 66%;
+    right: -22%;
+    width: 125%;
+    height: 430px;
+  }
+
+  .balloonScene {
+    transform: translate(-50%, -50%) scale(0.58);
+  }
+
+  .categoryCard {
+    width: 175px;
+    min-height: 110px;
+    padding: 14px;
+  }
+
+  .cardTitle {
+    font-size: 20px;
+  }
+
+  .orbitShadow {
+    width: 600px;
+    height: 200px;
+  }
+
+  .categoryIndicator {
+    left: 16px;
+    bottom: 20px;
+    max-width: calc(100% - 32px);
+  }
+
+  .scrollIndicator,
+  .cornerButton {
+    display: none;
+  }
+}

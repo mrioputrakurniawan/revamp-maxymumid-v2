@@ -1,0 +1,968 @@
+/* =========================================================
+   MAXYMUM ID — HERO
+   Balloon + Floating Work Cards
+========================================================= */
+
+.maxymum-page {
+  position: relative;
+  min-height: 100svh;
+  width: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 72% 42%,
+      rgba(77, 63, 181, 0.42),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(64, 52, 154, 0.2),
+      transparent 28%
+    ),
+    #17134d;
+  color: #fff;
+}
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.background-grid {
+  position: absolute;
+  inset: -20%;
+  opacity: 0.12;
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px
+    );
+  background-size: 70px 70px;
+  transform: perspective(700px) rotateX(62deg) scale(1.4);
+  transform-origin: center bottom;
+}
+
+.background-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  right: 10%;
+  top: 8%;
+  border-radius: 50%;
+  background: rgba(100, 87, 220, 0.2);
+  filter: blur(90px);
+}
+
+.background-glow-two {
+  width: 420px;
+  height: 420px;
+  left: -8%;
+  bottom: -15%;
+  background: rgba(255, 217, 0, 0.08);
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header {
+  /* 🌟 KUNCI UTAMA: Ubah menjadi fixed agar melayang permanen menembus intro */
+  position: fixed !important; 
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%); /* Menjaga posisi header tetap presisi di tengah layar */
+  
+  /* 🌟 Naikkan z-index menjadi sangat tinggi agar melompati lapisan lingkaran intro */
+  z-index: 99999 !important; 
+
+  /* Pertahankan setelan ukuran asli Anda agar tidak berantakan */
+  width: min(1380px, calc(100% - 96px));
+  
+  /* padding-top diganti ke padding agar area atas bawah seimbang saat melayang */
+  padding: 32px 0; 
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+
+  font-weight: 900;
+  letter-spacing: -0.07em;
+  text-transform: lowercase;
+}
+
+.brand-main {
+  font-size: 27px;
+}
+
+.brand-id {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #ffd900;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+
+.main-nav a {
+  position: relative;
+
+  color: #ffffff !important; /* Wajib putih murni agar efek pembalik warnanya akurat */
+  text-decoration: none;
+}
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+
+  transition:
+    color 250ms ease,
+    opacity 250ms ease;
+
+.main-nav a::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+
+  width: 0;
+  height: 1px;
+
+  background: #ffd900;
+
+  transition: width 300ms ease;
+}
+
+.main-nav a:hover {
+  color: #fff;
+}
+
+.main-nav a:hover::after {
+  width: 100%;
+}
+
+/* =========================================================
+   HERO LAYOUT
+========================================================= */
+
+.hero-section {
+  position: relative;
+  z-index: 5;
+
+  width: min(1380px, calc(100% - 96px));
+  min-height: calc(100svh - 92px);
+
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: minmax(340px, 0.78fr) minmax(600px, 1.55fr);
+  align-items: center;
+
+  gap: 30px;
+}
+
+/* =========================================================
+   HERO COPY
+========================================================= */
+
+.hero-copy {
+  position: relative;
+  z-index: 50;
+
+  max-width: 490px;
+}
+
+.hero-eyebrow {
+  margin-bottom: 30px;
+
+  color: rgba(255, 255, 255, 0.48);
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+}
+
+.hero-copy h1 {
+  margin: 0;
+
+  font-size: clamp(62px, 6.8vw, 108px);
+  line-height: 0.83;
+
+  font-weight: 800;
+  letter-spacing: -0.07em;
+}
+
+.hero-copy p {
+  max-width: 390px;
+
+  margin: 34px 0 0;
+
+  color: rgba(255, 255, 255, 0.6);
+
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.active-category {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin-top: 40px;
+
+  color: rgba(255, 255, 255, 0.62);
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.active-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+
+  color: #ffd900;
+}
+
+/* =========================================================
+   CAROUSEL AREA
+========================================================= */
+
+.carousel-area {
+  position: relative;
+
+  height: min(690px, 72vh);
+  min-height: 570px;
+
+  touch-action: pan-y;
+  user-select: none;
+
+  cursor: grab;
+}
+
+.carousel-area:active {
+  cursor: grabbing;
+}
+
+/* =========================================================
+   BALLOON SCENE
+========================================================= */
+
+.balloon-scene {
+  position: absolute;
+
+  left: 50%;
+  top: 45%;
+
+  width: 360px;
+  height: 520px;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 25;
+
+  pointer-events: none;
+}
+
+.balloon-glow {
+  position: absolute;
+
+  width: 340px;
+  height: 340px;
+
+  left: 50%;
+  top: 20%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 217, 0, 0.22),
+      rgba(255, 217, 0, 0.05) 42%,
+      transparent 72%
+    );
+
+  filter: blur(25px);
+}
+
+/* =========================================================
+   BALLOON
+========================================================= */
+
+.balloon {
+  position: absolute;
+
+  left: 50%;
+  top: 42%;
+
+  width: 235px;
+  height: 325px;
+
+  transform: translate(-50%, -50%);
+}
+
+.balloon-body {
+  position: absolute;
+
+  left: 50%;
+  top: 0;
+
+  width: 220px;
+  height: 285px;
+
+  transform: translateX(-50%);
+
+  overflow: hidden;
+
+  border-radius:
+    50% 50%
+    46% 46%
+    48% 48% / 
+    52% 52%
+    42% 42%
+    48% 48%;
+
+  background:
+    radial-gradient(
+      ellipse at 34% 25%,
+      rgba(255, 255, 255, 0.38),
+      transparent 15%
+    ),
+    radial-gradient(
+      ellipse at 62% 35%,
+      rgba(255, 224, 40, 0.95),
+      transparent 32%
+    ),
+    linear-gradient(
+      115deg,
+      #ffe82b 0%,
+      #ffd900 28%,
+      #f0bd00 62%,
+      #c99700 100%
+    );
+
+  box-shadow:
+    inset -24px -30px 45px rgba(103, 72, 0, 0.32),
+    inset 20px 10px 35px rgba(255, 255, 255, 0.22),
+    0 30px 75px rgba(0, 0, 0, 0.22);
+}
+
+.balloon-highlight {
+  position: absolute;
+
+  left: 32px;
+  top: 30px;
+
+  width: 58px;
+  height: 115px;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.38),
+    rgba(255, 255, 255, 0)
+  );
+
+  filter: blur(3px);
+
+  transform: rotate(17deg);
+}
+
+.balloon-panel {
+  position: absolute;
+
+  top: -15px;
+
+  width: 48px;
+  height: 320px;
+
+  border-radius: 50%;
+
+  border-left: 1px solid rgba(125, 91, 0, 0.24);
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.panel-one {
+  left: 31px;
+}
+
+.panel-two {
+  left: 77px;
+}
+
+.panel-three {
+  left: 123px;
+}
+
+.panel-four {
+  left: 169px;
+}
+
+.balloon-neck {
+  position: absolute;
+
+  left: 50%;
+  bottom: 26px;
+
+  width: 38px;
+  height: 42px;
+
+  transform: translateX(-50%);
+
+  border-radius: 0 0 14px 14px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #bd8a00,
+      #f2c400 50%,
+      #a67500
+    );
+
+  z-index: 2;
+}
+
+.balloon-top {
+  position: absolute;
+
+  left: 50%;
+  top: -7px;
+
+  width: 64px;
+  height: 20px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+
+  z-index: 3;
+}
+
+.balloon-top span {
+  display: block;
+
+  width: 17px;
+  height: 17px;
+
+  border-radius: 50%;
+
+  background: #c99400;
+}
+
+.balloon-ropes {
+  position: absolute;
+
+  left: 50%;
+  bottom: 10px;
+
+  width: 150px;
+  height: 90px;
+
+  transform: translateX(-50%);
+
+  z-index: 3;
+}
+
+.balloon-ropes span {
+  position: absolute;
+
+  width: 1px;
+  height: 82px;
+
+  background: rgba(80, 60, 0, 0.6);
+
+  transform-origin: top;
+}
+
+.balloon-ropes span:nth-child(1) {
+  left: 18px;
+  transform: rotate(20deg);
+}
+
+.balloon-ropes span:nth-child(2) {
+  left: 54px;
+  transform: rotate(8deg);
+}
+
+.balloon-ropes span:nth-child(3) {
+  right: 54px;
+  transform: rotate(-8deg);
+}
+
+.balloon-ropes span:nth-child(4) {
+  right: 18px;
+  transform: rotate(-20deg);
+}
+
+.balloon-basket {
+  position: absolute;
+
+  left: 50%;
+  bottom: -5px;
+
+  width: 92px;
+  height: 54px;
+
+  transform: translateX(-50%);
+
+  z-index: 5;
+
+  border-radius: 8px 8px 15px 15px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #7a5200,
+      #b77c00 45%,
+      #684400
+    );
+
+  box-shadow:
+    inset 0 8px 10px rgba(255, 220, 70, 0.18),
+    0 15px 20px rgba(0, 0, 0, 0.28);
+}
+
+.balloon-basket span {
+  position: absolute;
+
+  left: 8px;
+  right: 8px;
+  top: 12px;
+
+  height: 2px;
+
+  background: rgba(255, 220, 80, 0.24);
+}
+
+/* =========================================================
+   ORBIT
+========================================================= */
+
+.orbit-shadow {
+  position: absolute;
+
+  left: 50%;
+  top: 53%;
+
+  width: 760px;
+  height: 250px;
+
+  transform: translate(-50%, -50%);
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 80px rgba(76, 63, 180, 0.16);
+
+  pointer-events: none;
+}
+
+.carousel-world {
+  position: absolute;
+
+  left: 50%;
+  top: 53%;
+
+  width: 1px;
+  height: 1px;
+
+  z-index: 30;
+
+  pointer-events: none;
+}
+
+.category-card {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 250px;
+  min-height: 158px;
+
+  padding: 18px;
+
+  display: flex;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  border-radius: 4px;
+
+  color: #fff;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(56, 47, 133, 0.96),
+      rgba(28, 23, 79, 0.96)
+    );
+
+  box-shadow:
+    0 25px 55px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+
+  pointer-events: auto;
+
+  text-align: left;
+
+  transform-origin: center;
+
+  transition:
+    box-shadow 300ms ease,
+    border-color 300ms ease;
+}
+
+.category-card:hover,
+.category-card.front:hover {
+  border-color: rgba(255, 217, 0, 0.65);
+
+  box-shadow:
+    0 35px 70px rgba(0, 0, 0, 0.34),
+    0 0 30px rgba(255, 217, 0, 0.08);
+}
+
+.category-card.front {
+  border-color: rgba(255, 217, 0, 0.42);
+}
+
+.card-number {
+  position: absolute;
+
+  left: 18px;
+  top: 17px;
+
+  color: rgba(255, 255, 255, 0.42);
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  padding-top: 34px;
+}
+
+.card-eyebrow {
+  color: rgba(255, 255, 255, 0.46);
+
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.card-title {
+  margin-top: 8px;
+
+  font-size: 25px;
+  line-height: 1;
+
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+
+.card-brand {
+  margin-top: auto;
+
+  padding-top: 24px;
+
+  color: rgba(255, 255, 255, 0.42);
+
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.card-brand b {
+  color: #ffd900;
+}
+
+/* =========================================================
+   DRAG HINT
+========================================================= */
+
+.drag-hint {
+  position: absolute;
+
+  left: 50%;
+  bottom: 16px;
+
+  transform: translateX(-50%);
+
+  color: rgba(255, 255, 255, 0.32);
+
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   CATEGORY INDICATOR
+========================================================= */
+
+.category-indicator {
+  position: absolute;
+
+  left: 50%;
+  bottom: 26px;
+
+  transform: translateX(-50%);
+
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  white-space: nowrap;
+}
+
+.indicator {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 0;
+
+  color: rgba(255, 255, 255, 0.32);
+
+  background: transparent;
+
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+
+  transition: color 250ms ease;
+}
+
+.indicator-dot {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.24);
+
+  transition:
+    background 250ms ease,
+    transform 250ms ease;
+}
+
+.indicator:hover,
+.indicator.active {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.indicator.active .indicator-dot {
+  background: #ffd900;
+  transform: scale(1.5);
+}
+
+/* =========================================================
+   SCROLL
+========================================================= */
+
+.scroll-indicator {
+  position: absolute;
+
+  right: 32px;
+  bottom: 28px;
+
+  z-index: 100;
+
+  color: rgba(255, 255, 255, 0.3);
+
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* =========================================================
+   CORNER
+========================================================= */
+
+.corner-button {
+  position: absolute;
+
+  right: 30px;
+  top: 50%;
+
+  z-index: 100;
+
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+
+  color: #ffd900;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  transform: translateY(-50%);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1199px) {
+  .hero-section {
+    grid-template-columns: 0.75fr 1.25fr;
+    width: min(100% - 56px, 1100px);
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(56px, 7vw, 88px);
+  }
+
+  .carousel-area {
+    transform: scale(0.88);
+    transform-origin: center;
+  }
+
+  .site-header {
+    width: min(100% - 56px, 1100px);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    min-height: auto;
+
+    padding-top: 80px;
+    padding-bottom: 130px;
+  }
+
+  .hero-copy {
+    max-width: 620px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(58px, 12vw, 96px);
+  }
+
+  .carousel-area {
+    height: 570px;
+    min-height: 570px;
+
+    margin-top: -20px;
+
+    transform: scale(0.82);
+  }
+
+  .category-indicator {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .site-header {
+    width: calc(100% - 32px);
+    padding-top: 22px;
+  }
+
+  .brand-main {
+    font-size: 23px;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  .hero-section {
+    width: calc(100% - 32px);
+
+    padding-top: 75px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(54px, 16vw, 82px);
+  }
+
+  .hero-copy p {
+    max-width: 330px;
+
+    font-size: 13px;
+  }
+
+  .carousel-area {
+    height: 480px;
+    min-height: 480px;
+
+    margin-top: -25px;
+
+    transform: scale(0.58);
+  }
+
+  .balloon-scene {
+    top: 44%;
+  }
+
+  .orbit-shadow {
+    width: 700px;
+  }
+
+  .scroll-indicator,
+  .corner-button {
+    display: none;
+  }
+
+  .drag-hint {
+    bottom: 4px;
+  }
+}
